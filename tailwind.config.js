@@ -13,6 +13,9 @@ module.exports = {
             backgroundColor: ['active'],
         }
     },
+    presets: [
+        require("./vendor/wireui/wireui/tailwind.config.js")
+    ],
     content: [
         './app/**/*.php',
         './resources/**/*.html',
