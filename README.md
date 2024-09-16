@@ -3,5 +3,6 @@
 - [Tailwindcss](https://tailwindcss.com/).
 - [Alpinejs](https://alpinejs.dev/).
 - [Laravel](https://laravel.com/).
-- [livewire](https://livewire.laravel.com/).
-- [filamentphp](https://filamentphp.com/).
+- [Livewire](https://livewire.laravel.com/).
+- [Filamentphp](https://filamentphp.com/).
+- [Wireui](https://wireui.dev/).
