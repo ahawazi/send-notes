@@ -25,6 +25,7 @@ class NoteFactory extends Factory
             'send_date' => fake()->dateTime(),
             'is_published' => fake()->boolean,
             'heart_count' => fake()->randomNumber(),
+            'recipient' => fake()->randomNumber(),
         ];
     }
 }
