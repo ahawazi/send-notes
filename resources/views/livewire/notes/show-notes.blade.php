@@ -20,14 +20,17 @@ new class extends Component {
                 <x-button rose icon-right="plus" class="mt-6" href="{{ route('notes.create') }}">Create note</x-button>
             </div>
         @else
-            <div class="grid grid-cols-2 gap-4 mt-12">
+            <div class="grid grid-cols-3 gap-4">
                 @foreach ($notes as $note)
                     <x-card wire:key='{{ $note->id }}'>
                         <div class="flex justify-between">
-                            <a href="#" class="text-xl font-bold hover:underline hover:text-blue-500">
-                                {{ $note->title }}
-                            </a>
-                            <div class="text-xl text-gray-500">
+                            <div>
+                                <a href="#" class="text-xl font-bold hover:underline hover:text-blue-500">
+                                    {{ $note->title }}
+                                </a>
+                                <p class="mt-2 text-xs">{{ Str::limit($note->body, 50) }}</p>
+                            </div>
+                            <div class="text-xs text-gray-500">
                                 {{ \Carbon\Carbon::parse($note->send_date)->format('M-d-Y') }}
                             </div>
                         </div>
@@ -46,6 +49,7 @@ new class extends Component {
                     </x-card>
                 @endforeach
             </div>
+            <x-button rose icon-right="plus" class="mt-5" href="{{ route('notes.create') }}">Create note</x-button>
         @endif
     </div>
 </div>
