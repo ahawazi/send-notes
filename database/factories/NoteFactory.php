@@ -19,13 +19,14 @@ class NoteFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory()->create()->id,
-            'title' => fake()->title(),
-            'body' => fake()->paragraph(),
-            'send_date' => fake()->dateTime(),
-            'is_published' => fake()->boolean,
-            'heart_count' => fake()->randomNumber(),
-            'recipient' => fake()->randomNumber(),
+            'id' => $this->faker->uuid,
+            'user_id' => User::factory(),
+            'title' => $this->faker->words(5, true),
+            'body' => $this->faker->paragraph,
+            'resipient' => $this->faker->email,
+            'send_date' => $this->faker->date('Y-m-d', '+30 days'),
+            'is_published' => true,
+            'heart_count' => $this->faker->numberBetween(0, 20),
         ];
     }
 }
