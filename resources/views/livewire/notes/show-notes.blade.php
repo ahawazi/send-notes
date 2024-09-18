@@ -4,7 +4,6 @@ use Livewire\Volt\Component;
 use App\Models\Note;
 
 new class extends Component {
-    
     public function delete($noteId)
     {
         $note = Note::where('id', $noteId)->first();
@@ -24,7 +23,7 @@ new class extends Component {
         </div>
         HTML;
     }
-    
+
     public function with(): array
     {
         return [
@@ -47,9 +46,14 @@ new class extends Component {
                     <x-card wire:key='{{ $note->id }}'>
                         <div class="flex justify-between">
                             <div>
-                                <a href="{{ route('notes.edit', $note) }}" wire:navigate class="text-xl font-bold hover:underline hover:text-blue-500">
-                                    {{ $note->title }}
-                                </a>
+                                @can('update', $note)
+                                    <a href="{{ route('notes.edit', $note) }}" wire:navigate
+                                        class="text-xl font-bold hover:underline hover:text-blue-500">
+                                        {{ $note->title }}
+                                    </a>
+                                @else
+                                    <p class="text-xl font-bold text-gray-500">{{ $note->title }}</p>
+                                @endcan
                                 <p class="mt-2 text-xs">{{ Str::limit($note->body, 50) }}</p>
                             </div>
                             <div class="text-xs text-gray-500">
@@ -64,8 +68,10 @@ new class extends Component {
                                 </span>
                             </p>
                             <div>
-                                <x-mini-button rounded icon="eye" flat primary href="{{ route('notes.show', $note) }}"/>
-                                <x-mini-button rounded icon="trash" flat red interaction="negative" wire:click="delete('{{ $note->id }}')"/>
+                                <x-mini-button rounded icon="eye" flat primary
+                                    href="{{ route('notes.show', $note) }}" />
+                                <x-mini-button rounded icon="trash" flat red interaction="negative"
+                                    wire:click="delete('{{ $note->id }}')" />
                             </div>
                         </div>
                     </x-card>
