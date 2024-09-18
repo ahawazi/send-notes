@@ -28,9 +28,18 @@ class NoteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Note $note)
     {
-        //
+        if (! $note->is_published) {
+            abort(404);
+        }
+
+        $user = $note->user;
+
+        return view('Notes.view',[
+            'note' => $note,
+            'user' => $user,
+        ]);
     }
 
     /**
