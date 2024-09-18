@@ -42,7 +42,7 @@ new class extends Component {
             <x-input wire:model="title" label="Note Title" placeholder="It's been a great day." />
             <x-textarea wire:model="body" label="Your Note"
                 placeholder="Share all your thoughts with your friend." />
-            <x-input icon="user" wire:model="recipient" label="Recipient" placeholder="yourfriend@email.com"
+            <x-input icon="user" wire:model="resipient" label="Recipient" placeholder="yourfriend@email.com"
                 type="email" />
             <x-input icon="calendar" wire:model="send_date" type="date" label="Send Date" />
             <x-checkbox label="Note Published" wire:model='is_published' />
