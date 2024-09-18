@@ -3,11 +3,11 @@
 use Livewire\Volt\Component;
 
 new class extends Component {
-    public string $title;
-    public string $body;
-    public string $resipient;
-    public string $send_date;
-    // public string $is_published;
+    public $title;
+    public $body;
+    public $resipient;
+    public $send_date;
+    public $is_published;
 
     public function submit()
     {
@@ -16,7 +16,7 @@ new class extends Component {
             'body' => 'required|string|min:20',
             'send_date' => 'required|date',
             'resipient' => 'required|email',
-            // 'is_published' => 'boolean|nullable',
+            'is_published' => 'boolean',
         ]);
 
         auth()->user()->notes()->create($validation);
@@ -36,10 +36,10 @@ new class extends Component {
 
         <x-input icon="calendar" wire:model="send_date" type="date" label="send date" value="{{ old('send_date') }}"/>
 
-        {{-- <x-checkbox wire:model="is_published" value="{{ old('is_published') }}"/> --}}
+        <x-checkbox wire:model="is_published" value="{{ old('is_published') }}"/>
 
         <div class="pt-4">
-            <x-button wire:click="submit" rose right-icon="calendar" spiner>Schedule Note</x-button>
+            <x-button type="submit" rose right-icon="calendar" spiner>Schedule Note</x-button>
         </div>
 
         <x-errors />
